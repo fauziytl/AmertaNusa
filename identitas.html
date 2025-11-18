@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Data Pemesan AmertaNUSA</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="LandingPage.html" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"> <img src="img/logo-amerta.png" alt="Logo" class="logo-navbar"> </i>AmertaNUSA</h1>
+                    <!-- <img src="logo-amerta" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    
+                </div>
+            </nav>
+
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- Reservation Start -->
+        <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-0">
+                <div class="col-md-12 bg-dark d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">AmertaNUSA</h5>
+                        <h1 class="text-white mb-4">Data Pemesan</h1>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">Silahkan lengkapi data diri anda untuk reservasi</p>
+                        <form action="simpan_reservasi.php" method="POST">
+  <div class="row g-3">
+    <!-- Kolom kiri -->
+    <div class="col-md-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="name" name="form_name" placeholder="Nama" required pattern="[A-Za-z\s]+">
+        <label for="name">Nama</label>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <input type="email" 
+       class="form-control" 
+       id="email" 
+       name="email" 
+       placeholder="Email" 
+       required
+       pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+       title="Masukkan format email yang valid, contoh: nama@email.com">
+        <label for="email">Email</label>
+      </div>
+    </div>
+
+    <!-- Kolom kiri baris kedua -->
+    <div class="col-md-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="WhatsApp" required pattern="[0-9]{10,13}" title="Nomor WhatsApp harus berisi 10–13 digit angka">
+        <label for="phone">WhatsApp</label>
+      </div>
+    </div>
+
+    <!-- Kolom kanan baris kedua -->
+    <div class="col-md-6">
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Permintaan Khusus" id="message" name="occasion" style="height: 60px"></textarea>
+        <label for="message">Permintaan Khusus</label>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="deposito" name="deposito" readonly value="25000">
+        <label for="deposito">Uang Muka (Rp)</label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="setuju" required>
+        <label class="form-check-label text-white" for="setuju">
+          Saya telah menyetujui <a href="#" data-bs-toggle="modal" data-bs-target="#modalSyarat">Syarat dan Ketentuan Reservasi</a>
+        </label>
+      </div>
+    </div>
+
+    <!-- Tombol submit -->
+    <div class="col-12">
+      <button class="btn btn-primary w-100 py-3" type="submit">Buat Pesanan</button>
+    </div>
+  </div>
+                        </form>
+                        <script>
+                        document.getElementById('jumlah_orang').addEventListener('input', function() {
+                            const harga = 25000;
+                            const jumlah = parseInt(this.value) || 1;
+                            document.getElementById('deposito').value = harga * jumlah;
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Reservation Start -->
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Perusahaan</h4>
+                        <a class="btn btn-link" href="Tentang.html">Tentang Kami</a>
+                        <a class="btn btn-link" href="Kontak.html">Kontak Kami</a>
+                        <a class="btn btn-link" href="reservpage.html">Reservasi</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Kontak</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. Colombo No. 1, Yogyakarta, 55281, Indonesia</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 8123 4567 890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>amertanusa@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Jam Operasional</h4>
+                        <h5 class="text-light fw-normal">Senin - Minggu</h5>
+                        <p>12.00 WIB - 22.00 WIB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">AmertaNUSA</a>, Seluruh Hak Cipta Dilindungi. 
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
+                            Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="LandingPage.html">Beranda</a>
+                                <a href="Kontak.html">Bantuan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- Modal Syarat & Ketentuan -->
+<div class="modal fade" id="modalSyarat" tabindex="-1" aria-labelledby="modalSyaratLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-white">
+        <h5 class="modal-title  text-center w-100" id="modalSyaratLabel">Syarat & Ketentuan Reservasi AmertaNUSA</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        <p>Dengan melakukan reservasi di <strong>AmertaNUSA</strong>, pelanggan dianggap telah membaca dan menyetujui ketentuan berikut:</p>
+
+        <h6 class="mt-3">1. Reservasi dan Uang Muka</h6>
+        <ul>
+          <li>Setiap reservasi memerlukan pembayaran uang muka sebesar <strong>Rp25.000 per orang</strong> sebagai tanda jadi.</li>
+          <li>Uang muka dapat dibayarkan melalui metode yang telah disediakan di halaman konfirmasi.</li>
+        </ul>
+
+        <h6>2. Kedatangan dan Ketepatan Waktu</h6>
+        <ul>
+          <li>Pelanggan dimohon untuk datang <strong>tepat waktu</strong> sesuai jadwal reservasi.</li>
+          <li>Toleransi keterlambatan maksimal <strong>15 menit</strong> dari waktu yang ditentukan. Setelah itu, meja dapat dialihkan kepada pelanggan lain.</li>
+        </ul>
+
+        <h6>3. Pembatalan dan Pengembalian Dana</h6>
+        <ul>
+          <li>Pembatalan reservasi <strong>lebih dari 3 jam</strong> sebelum waktu reservasi dapat dilakukan tanpa kehilangan uang muka.</li>
+          <li>Pembatalan <strong>kurang dari 1 jam</strong> sebelum waktu reservasi akan menyebabkan uang muka hangus.</li>
+          <li>Pembatalan dilakukan melalui kontak resmi AmertaNUSA.</li>
+        </ul>
+
+        <h6>4. Perubahan Reservasi</h6>
+        <ul>
+          <li>Perubahan jumlah tamu atau waktu kedatangan harus dikonfirmasi minimal <strong>1 jam sebelumnya</strong>.</li>
+          <li>Permintaan perubahan akan disesuaikan dengan ketersediaan meja.</li>
+        </ul>
+
+        <h6>5. Ketentuan Tambahan</h6>
+        <ul>
+          <li>Dilarang membawa makanan atau minuman dari luar tanpa izin pihak restoran.</li>
+          <li>Restoran berhak menolak atau membatalkan reservasi apabila terjadi pelanggaran terhadap ketentuan di atas.</li>
+        </ul>
+
+        <h6>6. Kebijakan Privasi</h6>
+        <ul>
+          <li>Data pelanggan yang dikirim melalui formulir reservasi akan dijaga kerahasiaannya dan hanya digunakan untuk keperluan reservasi.</li>
+        </ul>
+
+        <p class="mt-3">Terima kasih telah memilih <strong>AmertaNUSA</strong>. Kami menantikan kunjungan Anda 🍽️</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+</div>
+    </div>
+  </div>
+</div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+// --- Ambil data dari POST via sessionStorage ---
+document.addEventListener("DOMContentLoaded", function() {
+  // cek apakah halaman ini dibuka langsung dari cek_meja.php
+  if (performance.getEntriesByType("navigation")[0].type === "navigate") {
+    // Jika dibuka langsung, coba ambil dari sessionStorage
+    const data = sessionStorage.getItem("formReservasi");
+    if (data) {
+      const parsed = JSON.parse(data);
+      isiForm(parsed);
+    }
+  }
+
+  // Jika dibuka setelah submit form (dari cek_meja.php)
+  // simpan datanya ke sessionStorage lewat event listener
+  if (window.history && window.history.pushState) {
+    window.addEventListener("message", function(e) {
+      if (e.data && e.data.type === "formReservasi") {
+        sessionStorage.setItem("formReservasi", JSON.stringify(e.data.value));
+        isiForm(e.data.value);
+      }
+    });
+  }
+});
+
+function isiForm(data) {
+  const hargaPerOrang = 25000;
+  const totalDeposit = data.jumlah_orang * hargaPerOrang;
+
+  document.getElementById("deposito").value = totalDeposit;
+
+  // Tambahkan hidden input agar ikut ke PHP nanti
+  const form = document.querySelector("form");
+  form.insertAdjacentHTML("beforeend", `
+    <input type="hidden" name="tanggal_reservasi" value="${data.tanggal_reservasi}">
+    <input type="hidden" name="waktu_reservasi" value="${data.waktu_reservasi}">
+    <input type="hidden" name="jumlah_orang" value="${data.jumlah_orang}">
+  `);
+}
+</script>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+  let valid = true;
+  let messages = [];
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const setuju = document.getElementById("setuju").checked;
+
+  // Validasi nama
+  if (name === "" || !/^[A-Za-z\s]+$/.test(name)) {
+    valid = false;
+    messages.push("Nama hanya boleh berisi huruf dan spasi.");
+  }
+
+  // Validasi email
+  if (email !== "" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    valid = false;
+    messages.push("Format email tidak valid.");
+  }
+
+  // Validasi nomor WhatsApp
+  if (!/^[0-9]{10,13}$/.test(phone)) {
+    valid = false;
+    messages.push("Nomor WhatsApp harus berisi 10–13 digit angka.");
+  }
+
+  // Validasi checkbox
+  if (!setuju) {
+    valid = false;
+    messages.push("Anda harus menyetujui syarat dan ketentuan.");
+  }
+
+  // Jika ada error
+  if (!valid) {
+    event.preventDefault();
+    alert(messages.join("\n"));
+  }
+});
+</script>
+
+</body>
+
+</html>
